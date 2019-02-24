@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
     <meta charset="UTF-8">
     <title>Trivia Game</title>
@@ -16,29 +15,31 @@
     <!-- google font link -->
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
 </head>
-
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center title-detail">
-                <h1> Trivia Game</h1>
+                <h1>Environmental Trivia Game</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 id="timer"></h2>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4"></div> 
             <div class="col-md-4 text-center row-detail">
-                <h3 id="question-num"> Question Number </h3>
-                <h5 id="question-text"> Question Text Here</h5>
-                <p id="answer-a">a. answer a</p>
-                <p id="answer-b">b. answer b</p>
-                <p id="answer-c">c. answer c</p>
-                <p id="answer-d">d. answer d</p>
+                <h3 class ="start" id="question-num">Start</h3>
+                <h5 id="question-text"></h5>
+                <p class="answer" id="answer-a"></p>
+                <p class="answer" id="answer-b"></p>
+                <p class="answer" id="answer-c"></p>
+                <p class="answer" id="answer-d"></p>
             </div>
             <div class="col-md-4"></div>
        </div>
     </div>
-
-
     <!-- link to external js file -->
     <script src="./assets/javascript/app.js"></script>
     <!-- bootstrap js links -->
@@ -52,5 +53,4 @@
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
 </body>
-
 </html>

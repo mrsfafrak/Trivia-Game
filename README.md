@@ -20,20 +20,4 @@
 * On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
 
 
-
-Which uses less water when washing dishes?
-a. Washing by hand
-b. Using the dishwasher (correct)
-c. Doesn't matter
-
-Which type of bag is more ecofriendly at the store?
-a. Plastic
-b. Paper
-c. Either one
-d. None of the above (correct)
-
-Appliances that are turned off don't use electricity?
-a. True
-b. False (correct)
-
 https://www.nationalgeographic.com/environment/global-warming/green-lifestyle-quiz/
