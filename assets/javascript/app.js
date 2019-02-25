@@ -33,6 +33,7 @@ var count = -1;
 var clock = 0;
 var correct = 0;
 var wrong = 0;
+
 // when start is clicked or when it is clicked for a new round
 $(".start").on("click", function () {
     count = -1;
@@ -41,22 +42,18 @@ $(".start").on("click", function () {
     wrong = 0;
     nextQuestion();
 });
+
 // function to trigger the next question
 function nextQuestion() {
     count++;
-    clock = 31;
-    var intervalId = setInterval(timer, 1000);
+    // clock = 31;
+    // var intervalId = setInterval(timer, 1000);
     $("#question-num").text(Questions[count].number);
     $("#question-text").text(Questions[count].question);
     $("#answer-a").text(Questions[count].answer_a);
     $("#answer-b").text(Questions[count].answer_b);
     $("#answer-c").text(Questions[count].answer_c);
     $("#answer-d").text(Questions[count].answer_d);
-};
-// function to activate timer clock
-function timer() {
-    clock--;
-    $("#timer").text(clock);
 };
 
 // function that runs when player clicks on one of the possible answers
@@ -65,23 +62,33 @@ $(".answer").on("click", function () {
     // if the answer is correct
     if (answer === Answers[count]) {
         correct++;
-        console.log("correct" + correct);
+        $("#question-num").text("");
+        $("#question-text").text("You are correct!");
+        $("#answer-a").text(Answers[count]);
+        $("#answer-b").text("");
+        $("#answer-c").text("");
+        $("#answer-d").text("");
     }
     // if the answer is wrong
     else {
         wrong++;
-        console.log("wrong" + wrong);
+        $("#question-num").text("");
+        $("#question-text").text("Incorrect.");
+        $("#answer-a").text("Correct answer was:");
+        $("#answer-b").text(Answers[count]);
+        $("#answer-c").text("");
+        $("#answer-d").text("");
     };
     // since count is for index of the two arrays:
     // we need to add one to compare to length of the array to trigger end of game
     var counter = count + 1;
     // if we have reached the end of our questions, it ends game:
     if (counter === Questions.length) {
-        endGame();
+        setTimeout(endGame, 5000);
     }
     // if we still have more questions to go, move onto next question:
     else {
-        nextQuestion();
+        setTimeout(nextQuestion, 5000);
     };
 });
 // function to trigger the end of the game, show the score, offer to play agin
@@ -91,7 +98,32 @@ function endGame() {
     $("#question-text").text("");
     var sum = Math.floor((correct / (correct + wrong)) * 100);
     $("#answer-a").text("TRIVIA COMPLETE!");
-    $("#answer-b").text("You scored a "+ sum + "%");
+    $("#answer-b").text("You scored a " + sum + "%");
     $("#answer-c").text("Correct: " + correct);
     $("#answer-d").text("Wrong: " + wrong);
 };
+
+
+
+
+// function timesUp(){
+//     wrong++;
+//     $("#question-num").text("Time is up!");
+//     $("#question-text").text("Incorrect.");
+//     $("#answer-a").text("Correct answer was:");
+//     $("#answer-b").text(Answers[count]);
+//     $("#answer-c").text("");
+//     $("#answer-d").text("");
+//     var counter = count + 1;
+//     if (counter === Questions.length) {
+//         setTimeout(endGame,5000);
+//     }
+//     else {
+//         setTimeout(nextQuestion, 5000);
+//     };
+// };
+// function to activate timer clock
+// function timer() {
+//     clock--;
+//     $("#timer").text(clock);
+// };
