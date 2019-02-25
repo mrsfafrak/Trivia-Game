@@ -1,7 +1,7 @@
 body{
     background: #89df7e;
 }
-h1,h2{
+h1,h2,h6{
     color: white;
     font-family: 'PT Sans Narrow', sans-serif;
 }
@@ -17,7 +17,7 @@ p:hover{
     margin-top: 4rem;
 }
 .row-detail{
-    margin-top: 3rem;
+    margin-top: 2rem;
     border: 1px solid rgb(201, 197, 197);
     background: white;
     padding-top: 1rem;
