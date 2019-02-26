@@ -33,20 +33,23 @@ var count = -1;
 var correct = 0;
 var wrong = 0;
 var clock;
+var isPlayerGuessing = true;
 
 // when start is clicked or when it is clicked for a new round
 $(".start").on("click", function () {
     count = -1;
     correct = 0;
     wrong = 0;
+    isPlayerGuessing=true;
     nextQuestion();
 });
 
 // function to trigger the next question
 function nextQuestion() {
+    isPlayerGuessing = false;
     count++;
     stopTimer();
-    countdown = 31;
+    countdown = 10;
     startTimer();
     $("#question-num").text(Questions[count].number);
     $("#question-text").text(Questions[count].question);
@@ -59,6 +62,7 @@ function nextQuestion() {
 
 // function that runs when player clicks on one of the possible answers
 $(".answer").on("click", function () {
+    isPlayerGuessing=true;
     var answer = $(this).text();
     // if the answer is correct
     if (answer === Answers[count]) {
@@ -111,8 +115,30 @@ function time() {
     if (counter === Questions.length && countdown === 0){
         endGame();
     }
-    else if(countdown === 0 ){
+    else if(countdown === 0 && isPlayerGuessing){
+        $("#question-num").text("");
+        $("#question-text").text("You are correct!");
+        $("#answer-a").text(Answers[count]);
+        $("#answer-b").text("");
+        $("#answer-c").text("");
+        $("#answer-d").text("");
+        stopTimer();
+        countdown = 6;
+        startTimer();
         nextQuestion();
+    }
+    else if (countdown === 0 && isPlayerGuessing===false){
+        wrong++;
+        $("#question-num").text("");
+        $("#question-text").text("Incorrect.");
+        $("#answer-a").text("Correct answer was:");
+        $("#answer-b").text(Answers[count]);
+        $("#answer-c").text("");
+        $("#answer-d").text("");
+        isPlayerGuessing = true;
+        stopTimer();
+        countdown = 6;
+        startTimer();
     }
 };
 // function to stop/clear timer clock
