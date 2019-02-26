@@ -49,7 +49,7 @@ function nextQuestion() {
     isPlayerGuessing = false;
     count++;
     stopTimer();
-    countdown = 10;
+    countdown = 31;
     startTimer();
     $("#question-num").text(Questions[count].number);
     $("#question-text").text(Questions[count].question);
@@ -130,7 +130,7 @@ function time() {
     else if (countdown === 0 && isPlayerGuessing===false){
         wrong++;
         $("#question-num").text("");
-        $("#question-text").text("Incorrect.");
+        $("#question-text").text("Out of time!");
         $("#answer-a").text("Correct answer was:");
         $("#answer-b").text(Answers[count]);
         $("#answer-c").text("");
