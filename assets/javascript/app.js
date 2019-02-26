@@ -80,28 +80,15 @@ $(".answer").on("click", function () {
         $("#answer-c").text("");
         $("#answer-d").text("");
     };
-
-    // since count is for index of the two arrays:
-    // we need to add one to compare to length of the array to trigger end of game
-    var counter = count + 1;
-    // if we have reached the end of our questions, it ends game:
-    if (counter === Questions.length) {
+    // clear the current time and start a 5 second timer
         stopTimer();
         countdown = 6;
         startTimer();
-        setTimeout(endGame, 5000);
-    }
-    // if we still have more questions to go, move onto next question:
-    else {
-        stopTimer();
-        countdown = 6;
-        startTimer();
-        setTimeout(nextQuestion, 5000);
-    };
 });
 
 // function to trigger the end of the game, show the score, offer to play agin
 function endGame() {
+    stopTimer();
     $("#timer").text("");
     $(".start").text("CLICK HERE TO PLAY AGAIN");
     $("#question-text").text("");
@@ -116,12 +103,19 @@ function endGame() {
 function startTimer() {
     clock = setInterval(time, 1000);
 };
-
-function time (){
+// function within startTimer function
+function time() {
     countdown--;
     $("#timer").text(countdown);
+    var counter = count + 1;
+    if (counter === Questions.length && countdown === 0){
+        endGame();
+    }
+    else if(countdown === 0 ){
+        nextQuestion();
+    }
 };
-
-function stopTimer(){
+// function to stop/clear timer clock
+function stopTimer() {
     clearInterval(clock);
 };
