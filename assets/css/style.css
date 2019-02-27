@@ -9,6 +9,12 @@ h3,h5,p{
     font-family: 'PT Sans Narrow', sans-serif;
     color: #42aa35; 
 }
+h6{
+    font-style: oblique;
+}
+h1{
+    text-shadow: 2px 2px 4px #000000;
+}
 p:hover{
         font-display: bold;
         background:  #87d87c;
@@ -23,6 +29,8 @@ p:hover{
     border-radius: 25px;
     background: white;
     padding-top: 1rem;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .start{
     cursor:pointer;
