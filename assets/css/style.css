@@ -23,3 +23,6 @@ p:hover{
     background: white;
     padding-top: 1rem;
 }
+.start{
+    cursor:pointer;
+}
