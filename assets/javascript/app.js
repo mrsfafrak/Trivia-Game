@@ -5,7 +5,7 @@ var question1 = {
     answer_a: "a. Washing by hand",
     answer_b: "b. Using the dishwasher", // correct
     answer_c: "c. Doesn't matter",
-    answer_d: ""
+    answer_d: "d. Talk to the rubber duck."
 }
 var question2 = {
     number: "Question #2",
