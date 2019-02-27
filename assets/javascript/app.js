@@ -168,7 +168,7 @@ function endGame() {
         var outcome = "Not too shabby!"
     };
     if (sum > 70) {
-        var outcome = "Wow! You're an Environmental Wiz!!"
+        var outcome = "Wow! You're an Environmental Whiz!!"
     };
     $("#answer-a").text("TRIVIA COMPLETE!");
     $("#answer-b").text("You scored a " + sum + "%. " + outcome);
