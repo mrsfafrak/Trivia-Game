@@ -1,6 +1,7 @@
 # Trivia-Game
 
 ### Received the following directions as a homework assignment for making use of timers in Javascript & jQuery
+### Chose to do an environmental theme!
 ### see directions below:
 
 
@@ -20,4 +21,3 @@
 * On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page).
 
 
-https://www.nationalgeographic.com/environment/global-warming/green-lifestyle-quiz/

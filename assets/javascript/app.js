@@ -84,17 +84,15 @@ var question10 = {
 var Questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
 // Answers Array:
 var Answers = ["b. Using the dishwasher", "d. None of the above", "b. False", "a. 25,000", "b. 4,000", "b. 5", "a. 1%", "d. It can be recycled infinitely.", "c. 25 trillion", "d. 1000"]
-
-
 // intital global variables defined
 var count = -1;
 var correct = 0;
 var wrong = 0;
 var clock;
+//booleans to help determine state of game
 var isPlayerGuessing = true;
 var canClick = true;
 var canStart = true;
-
 // when start is clicked or when it is clicked for a new round
 $(".start").on("click", function () {
     if (canStart) {
@@ -107,7 +105,6 @@ $(".start").on("click", function () {
         nextQuestion();
     };
 });
-
 // function to trigger the next question
 function nextQuestion() {
     canClick = true;
@@ -124,13 +121,10 @@ function nextQuestion() {
     $("#answer-d").text(Questions[count].answer_d);
 
 };
-
 // function that runs when player clicks on one of the possible answers
-
 $(".answer").on("click", function () {
     if (canClick) {
         canClick = false;
-        console.log(canClick);
         isPlayerGuessing = true;
         var answer = $(this).text();
         // if the answer is correct
@@ -159,7 +153,6 @@ $(".answer").on("click", function () {
         startTimer();
     };
 });
-
 // function to trigger the end of the game, show the score, offer to play agin
 function endGame() {
     canStart = true;
@@ -171,7 +164,7 @@ function endGame() {
     if (sum <= 50) {
         var outcome = "Meh, hope you learned some facts!"
     };
-    if (sum >= 50 && sum <= 70) {
+    if (sum > 50 && sum <= 70) {
         var outcome = "Not too shabby!"
     };
     if (sum > 70) {
@@ -182,15 +175,19 @@ function endGame() {
     $("#answer-c").text("Correct: " + correct);
     $("#answer-d").text("Wrong: " + wrong);
 };
-
 // function to activate timer clock
 function startTimer() {
     clock = setInterval(time, 1000);
 };
-// function within startTimer function
+// function within startTimer function, contains several conditional statements to determine
+// what needs to be done when timer reaches 0
+// also its basic function is the countdown the timer
 function time() {
+    //each instance time function is called, the timer goes down one
     countdown--;
     $("#timer").text(countdown);
+    //need this counter variable since count is to reference index position 
+    //so it will not match questions length when needed unless 1 is added
     var counter = count + 1;
     if (counter === Questions.length && countdown === 0 && isPlayerGuessing) {
         endGame();
@@ -232,9 +229,9 @@ function time() {
         stopTimer();
         countdown = 6;
         startTimer();
-    }
+    };
 };
-// function to stop/clear timer clock
+// function to stop/clear timer clock to prevent new timers from being created
 function stopTimer() {
     clearInterval(clock);
 };
