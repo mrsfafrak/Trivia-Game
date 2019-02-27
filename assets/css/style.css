@@ -1,5 +1,6 @@
 body{
-    background: #89df7e;
+    /* background: #89df7e; */
+    background: linear-gradient(180deg,#89df7e,#b1e7a9) fixed;
 }
 h1,h2,h6{
     color: white;
