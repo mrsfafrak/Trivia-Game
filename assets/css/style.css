@@ -12,6 +12,7 @@ h3,h5,p{
 p:hover{
         font-display: bold;
         background:  #87d87c;
+        cursor:pointer;
 }
 .title-detail{
     margin-top: 4rem;

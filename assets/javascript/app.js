@@ -40,7 +40,7 @@ $(".start").on("click", function () {
     count = -1;
     correct = 0;
     wrong = 0;
-    isPlayerGuessing=true;
+    isPlayerGuessing = true;
     nextQuestion();
 });
 
@@ -49,7 +49,7 @@ function nextQuestion() {
     isPlayerGuessing = false;
     count++;
     stopTimer();
-    countdown = 31;
+    countdown = 10;
     startTimer();
     $("#question-num").text(Questions[count].number);
     $("#question-text").text(Questions[count].question);
@@ -62,7 +62,7 @@ function nextQuestion() {
 
 // function that runs when player clicks on one of the possible answers
 $(".answer").on("click", function () {
-    isPlayerGuessing=true;
+    isPlayerGuessing = true;
     var answer = $(this).text();
     // if the answer is correct
     if (answer === Answers[count]) {
@@ -85,9 +85,9 @@ $(".answer").on("click", function () {
         $("#answer-d").text("");
     };
     // clear the current time and start a 5 second timer
-        stopTimer();
-        countdown = 6;
-        startTimer();
+    stopTimer();
+    countdown = 6;
+    startTimer();
 });
 
 // function to trigger the end of the game, show the score, offer to play agin
@@ -112,10 +112,23 @@ function time() {
     countdown--;
     $("#timer").text(countdown);
     var counter = count + 1;
-    if (counter === Questions.length && countdown === 0){
+    if (counter === Questions.length && countdown === 0 && isPlayerGuessing) {
         endGame();
     }
-    else if(countdown === 0 && isPlayerGuessing){
+    else if (counter === Questions.length && countdown === 0 && isPlayerGuessing === false) {
+        wrong++;
+        $("#question-num").text("");
+        $("#question-text").text("Out of time!");
+        $("#answer-a").text("Correct answer was:");
+        $("#answer-b").text(Answers[count]);
+        $("#answer-c").text("");
+        $("#answer-d").text("");
+        isPlayerGuessing = true;
+        stopTimer();
+        countdown = 6;
+        startTimer();
+    }
+    else if (countdown === 0 && isPlayerGuessing) {
         $("#question-num").text("");
         $("#question-text").text("You are correct!");
         $("#answer-a").text(Answers[count]);
@@ -127,7 +140,7 @@ function time() {
         startTimer();
         nextQuestion();
     }
-    else if (countdown === 0 && isPlayerGuessing===false){
+    else if (countdown === 0 && isPlayerGuessing === false) {
         wrong++;
         $("#question-num").text("");
         $("#question-text").text("Out of time!");
