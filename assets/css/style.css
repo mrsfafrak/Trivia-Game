@@ -1,5 +1,4 @@
 body{
-    /* background: #89df7e; */
     background: linear-gradient(180deg,#89df7e,#b1e7a9) fixed;
 }
 h1,h2,h6{
@@ -14,7 +13,7 @@ h6{
     font-style: oblique;
 }
 h1{
-    text-shadow: 2px 2px 4px #000000;
+    text-shadow: 2px 2px 4px #7a7777;
 }
 p:hover{
         font-display: bold;

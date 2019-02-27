@@ -93,24 +93,24 @@ var wrong = 0;
 var clock;
 var isPlayerGuessing = true;
 var canClick = true;
-var canStart=true;
+var canStart = true;
 
 // when start is clicked or when it is clicked for a new round
 $(".start").on("click", function () {
-    if (canStart){
-        canStart=false;
-    count = -1;
-    correct = 0;
-    wrong = 0;
-    isPlayerGuessing = true;
-    canClick = true;
-    nextQuestion();
-};
+    if (canStart) {
+        canStart = false;
+        count = -1;
+        correct = 0;
+        wrong = 0;
+        isPlayerGuessing = true;
+        canClick = true;
+        nextQuestion();
+    };
 });
 
 // function to trigger the next question
 function nextQuestion() {
-    canClick=true;
+    canClick = true;
     isPlayerGuessing = false;
     count++;
     stopTimer();
@@ -162,14 +162,23 @@ $(".answer").on("click", function () {
 
 // function to trigger the end of the game, show the score, offer to play agin
 function endGame() {
-    canStart=true;
+    canStart = true;
     stopTimer();
     $("#timer").text("");
     $(".start").text("CLICK HERE TO PLAY AGAIN");
     $("#question-text").text("");
     var sum = Math.floor((correct / (correct + wrong)) * 100);
+    if (sum <= 50) {
+        var outcome = "Meh, hope you learned some facts!"
+    };
+    if (sum >= 50 && sum <= 70) {
+        var outcome = "Not too shabby!"
+    };
+    if (sum > 70) {
+        var outcome = "Wow! You're an Environmental Wiz!!"
+    };
     $("#answer-a").text("TRIVIA COMPLETE!");
-    $("#answer-b").text("You scored a " + sum + "%");
+    $("#answer-b").text("You scored a " + sum + "%. " + outcome);
     $("#answer-c").text("Correct: " + correct);
     $("#answer-d").text("Wrong: " + wrong);
 };
