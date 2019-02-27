@@ -20,6 +20,7 @@ p:hover{
 .row-detail{
     margin-top: 2rem;
     border: 1px solid rgb(201, 197, 197);
+    border-radius: 25px;
     background: white;
     padding-top: 1rem;
 }

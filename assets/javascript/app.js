@@ -27,14 +27,14 @@ var question4 = {
     number: "Question #4",
     question: "How many trees are cut down each day to produce toilet paper?",
     answer_a: "a. 25,000", // correct
-    answer_b: "b. 50,000", 
+    answer_b: "b. 50,000",
     answer_c: "c. 100,000",
     answer_d: "d. 250,000"
 }
 var question5 = {
     number: "Question #5",
     question: "How long in years does it take a glass bottle to decompose?",
-    answer_a: "a. 2,000", 
+    answer_a: "a. 2,000",
     answer_b: "b. 4,000", // correct
     answer_c: "c. 10,000",
     answer_d: "d. It never decomposes"
@@ -42,7 +42,7 @@ var question5 = {
 var question6 = {
     number: "Question #6",
     question: "If everyone on Earth lived like an average American, how many planets would it take to provide enough resources?",
-    answer_a: "a. 2", 
+    answer_a: "a. 2",
     answer_b: "b. 5", // correct
     answer_c: "c. 10",
     answer_d: "d. Our earth could provide enough"
@@ -51,31 +51,31 @@ var question7 = {
     number: "Question #7",
     question: "What percentage of earth's water can be used?",
     answer_a: "a. 1%", // correct
-    answer_b: "b. 5%", 
+    answer_b: "b. 5%",
     answer_c: "c. 10%",
     answer_d: "d. 15%"
 }
 var question8 = {
     number: "Question #8",
     question: "How many times can aluminum be recycled?",
-    answer_a: "a. 2x", 
-    answer_b: "b. 20x", 
+    answer_a: "a. 2x",
+    answer_b: "b. 20x",
     answer_c: "c. 200x",
     answer_d: "d. It can be recycled infinitely."// correct
 }
 var question9 = {
     number: "Question #9",
     question: "How many Styrofoam cups do Americans throw away annually?",
-    answer_a: "a. 250 million", 
-    answer_b: "b. 250 billion", 
+    answer_a: "a. 250 million",
+    answer_b: "b. 250 billion",
     answer_c: "c. 25 trillion",// correct
     answer_d: "d. 250 trillion"
 }
 var question10 = {
     number: "Question #10",
     question: "Plastic bags take how many years to decompose?",
-    answer_a: "a. 250", 
-    answer_b: "b. 500", 
+    answer_a: "a. 250",
+    answer_b: "b. 500",
     answer_c: "c. 750",
     answer_d: "d. 1000"// correct
 }
@@ -83,7 +83,7 @@ var question10 = {
 // Questions into an array:
 var Questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
 // Answers Array:
-var Answers = ["b. Using the dishwasher", "d. None of the above", "b. False","a. 25,000","b. 4,000","b. 5","a. 1%","d. It can be recycled infinitely.","c. 25 trillion","d. 1000"]
+var Answers = ["b. Using the dishwasher", "d. None of the above", "b. False", "a. 25,000", "b. 4,000", "b. 5", "a. 1%", "d. It can be recycled infinitely.", "c. 25 trillion", "d. 1000"]
 
 
 // intital global variables defined
@@ -93,19 +93,24 @@ var wrong = 0;
 var clock;
 var isPlayerGuessing = true;
 var canClick = true;
+var canStart=true;
 
 // when start is clicked or when it is clicked for a new round
 $(".start").on("click", function () {
+    if (canStart){
+        canStart=false;
     count = -1;
     correct = 0;
     wrong = 0;
     isPlayerGuessing = true;
     canClick = true;
     nextQuestion();
+};
 });
 
 // function to trigger the next question
 function nextQuestion() {
+    canClick=true;
     isPlayerGuessing = false;
     count++;
     stopTimer();
@@ -121,8 +126,9 @@ function nextQuestion() {
 };
 
 // function that runs when player clicks on one of the possible answers
-if (canClick) {
-    $(".answer").on("click", function () {
+
+$(".answer").on("click", function () {
+    if (canClick) {
         canClick = false;
         console.log(canClick);
         isPlayerGuessing = true;
@@ -151,10 +157,12 @@ if (canClick) {
         stopTimer();
         countdown = 6;
         startTimer();
-    });
-};
+    };
+});
+
 // function to trigger the end of the game, show the score, offer to play agin
 function endGame() {
+    canStart=true;
     stopTimer();
     $("#timer").text("");
     $(".start").text("CLICK HERE TO PLAY AGAIN");
