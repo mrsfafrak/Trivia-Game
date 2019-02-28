@@ -185,7 +185,7 @@ function startTimer() {
 function time() {
     //each instance time function is called, the timer goes down one
     countdown--;
-    $("#timer").text(countdown);
+    $("#timer").text(countdown+"s");
     //need this counter variable since count is to reference index position 
     //so it will not match questions length when needed unless 1 is added
     var counter = count + 1;
